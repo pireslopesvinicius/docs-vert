@@ -1,0 +1,13 @@
+[project]
+name = "docs-vert"
+version = "0.1.0"
+description = "API de conversão de documentos - DOCX para PDF"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.127.1",
+    "uvicorn>=0.40.0",
+    "python-multipart>=0.0.6",
+    "pydantic>=2.0.0",
+    "slowapi>=0.1.9",
+]
