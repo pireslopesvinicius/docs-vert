@@ -31,7 +31,10 @@ class ConversionService:
                 if os.path.exists(path):
                     return path
         else:
-            # Linux/Mac
+            # Linux/Mac - tenta AppImage nova primeiro
+            if os.path.exists('/usr/local/bin/LibreOffice-fresh.basic-x86_64.AppImage'):
+                return '/usr/local/bin/LibreOffice-fresh.basic-x86_64.AppImage'
+            
             if shutil.which("soffice"):
                 return "soffice"
             if shutil.which("libreoffice"):
