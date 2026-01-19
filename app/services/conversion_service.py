@@ -31,10 +31,7 @@ class ConversionService:
                 if os.path.exists(path):
                     return path
         else:
-            # Linux/Mac - tenta AppImage nova primeiro (extraída)
-            if os.path.exists('/usr/local/bin/squashfs-root/opt/libreoffice25.8/program/soffice'):
-                return '/usr/local/bin/squashfs-root/opt/libreoffice25.8/program/soffice'
-            
+            # Linux/Mac
             if shutil.which("soffice"):
                 return "soffice"
             if shutil.which("libreoffice"):
