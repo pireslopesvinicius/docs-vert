@@ -12,6 +12,9 @@ class ConversionService:
         self.upload_dir = UPLOAD_DIR
         self.upload_dir.mkdir(exist_ok=True)
         self.libreoffice_path = self._find_libreoffice()
+        # Define PATH completo pra systemd
+        self.env = os.environ.copy()
+        self.env['PATH'] = '/home/docs-vert/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/sbin'
     
     def _find_libreoffice(self) -> str:
         """Encontra o caminho do LibreOffice instalado"""
@@ -82,7 +85,8 @@ class ConversionService:
                 cmd,
                 capture_output=True,
                 text=True,
-                timeout=300  # 5 minutos
+                timeout=300,  # 5 minutos
+                env=self.env
             )
             
             if result.returncode != 0:
