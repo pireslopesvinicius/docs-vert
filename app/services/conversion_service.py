@@ -106,7 +106,9 @@ class ConversionService:
             if final_pdf_path.exists():
                 final_pdf_path.unlink()
             
-            pdf_path_temp.rename(final_pdf_path)
+            # Usa shutil.move() pq /tmp e /home podem estar em filesystems diferentes
+            import shutil
+            shutil.move(str(pdf_path_temp), str(final_pdf_path))
             
             return str(final_pdf_path)
         
